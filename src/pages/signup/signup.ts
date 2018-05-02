@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { TabsPage} from "../tabs/tabs";
+import { AuthServiceProvider} from "../../providers/auth-service/auth-service";
 
 /**
  * Generated class for the SignupPage page.
@@ -16,7 +17,20 @@ import { TabsPage} from "../tabs/tabs";
 })
 export class SignupPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  responseData: any;
+
+  userData = {
+    "username": "",
+    "password": "",
+    "name": "",
+    "email": ""
+  }
+
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    public authserVice: AuthServiceProvider
+  ) {
   }
 
   ionViewDidLoad() {
@@ -25,7 +39,18 @@ export class SignupPage {
 
   signup()
   {
-    this.navCtrl.push(TabsPage);
+    this.authserVice.postData(this.userData,'user')
+      .then((result)=>{
+        this.responseData = result;
+        if(this.responseData.data){
+          console.log(this.responseData);
+          this.navCtrl.push(TabsPage);
+        }
+        else{
+          console.log('In else');
+        }
+      })
+
 
   }
 

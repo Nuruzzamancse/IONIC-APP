@@ -1,11 +1,23 @@
-
-
 <ion-content padding id="welcome">
-  <h1>Welcome to Mr. Khan</h1>
-  <div>Make Something Interseting</div>
+  <img src="assets/imgs/logo.png" class="logo"/>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <h1>Welcome to Your App</h1>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 
-  <button ion-button block class="marginTop" (click)="login()">Login</button>
-  <button ion-button block color="lightPrimary" (click)="signup()">Sign Up</button>
-
-
+  <ion-grid >
+    <ion-row style="margin-top: 120px">
+      <ion-col center text-center>
+        <button ion-button full color="success" (click)="signup()">Sign up</button>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col center text-center>
+        <button ion-button full color="lightText" (click)="login()">Log in</button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
